@@ -22,7 +22,7 @@ const DrinkCollation = () => {
         scrollTrigger: {
           trigger: container.current,
           start: "top 50%",
-          markers: true,
+          // markers: true,
           end: "bottom 70%", // Narrowing the window makes the animation feel tighter
           // '1' adds a slight smooth delay (1 second) to the scrub
         },
@@ -108,7 +108,7 @@ const DrinkCollation = () => {
       <div
         ref={scrollingSection}
         className="flex flex-col w-[90vw] py-[10vh] mx-auto border 
-        lg:flex-row lg:w-auto "
+        lg:flex-row lg:w-auto lg:py-0 "
       >
         {/* flaver title section */}
         <div
