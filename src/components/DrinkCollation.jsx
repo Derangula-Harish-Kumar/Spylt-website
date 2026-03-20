@@ -5,7 +5,7 @@ import { SplitText, ScrollTrigger } from "gsap/all";
 import { useGSAP } from "@gsap/react";
 
 const DrinkCollation = () => {
-  // const title = useRef(null);
+  // const title = useRef(null);  //not using heare
   const container = useRef(null);
   const clipText = useRef(null);
   const scrollingSection = useRef(null);
