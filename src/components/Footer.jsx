@@ -171,7 +171,7 @@ const Footer = () => {
                   title="Send via WhatsApp"
                   className="ml-3 hover:opacity-80 transition-opacity shrink-0"
                 >
-                  <img src="/public/images/arrow.svg" alt="arrow svg" />
+                  <img src="/images/arrow.svg" alt="arrow svg" />
                 </button>
               </div>
             </section>

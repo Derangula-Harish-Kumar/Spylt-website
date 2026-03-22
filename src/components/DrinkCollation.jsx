@@ -4,27 +4,23 @@ import { gsap } from "gsap";
 import { SplitText, ScrollTrigger } from "gsap/all";
 import { useGSAP } from "@gsap/react";
 
+// Register plugins outside the component to prevent re-registration
+gsap.registerPlugin(useGSAP, SplitText, ScrollTrigger);
+
 const DrinkCollation = () => {
-  // const title = useRef(null);  //not using heare
   const container = useRef(null);
   const clipText = useRef(null);
   const scrollingSection = useRef(null);
 
-  // const heroParent = useRef(null);
-
+  // 1. Title Animations
   useGSAP(
     () => {
-      {
-        /* flaver title section */
-      }
       const splitTitle = new SplitText("#title", { type: "chars" });
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: container.current,
           start: "top 50%",
-          // markers: true,
-          end: "bottom 70%", // Narrowing the window makes the animation feel tighter
-          // '1' adds a slight smooth delay (1 second) to the scrub
+          end: "bottom 70%",
         },
       });
 
@@ -52,50 +48,33 @@ const DrinkCollation = () => {
         duration: 1.5,
         ease: "power2.out",
       });
-
-      // gsap.to(heroParent.current, {
-      //   scrollTrigger: {
-      //     trigger: heroParent.current,
-      //     start: "2% top",
-      //     end: "bottom top",
-      //     // markers: true,
-      //     scrub: true,
-      //   },
-      //   rotate: 8,
-      //   ease: "power1.out",
-      //   scale: 0.9,
-      //   yPercent: 20,
-      // });
     },
-    {
-      // scope: heroParent.current,
-    },
+    { scope: container },
   );
 
+  // 2. Horizontal Scroll Logic with GPU Acceleration
   useGSAP(
     () => {
-      // Calculate how far the section needs to move
-      // Total width of content - width of the visible screen
-      const getScrollAmount = () => {
-        let sectionWidth = scrollingSection.current.scrollWidth;
-        let viewportWidth = window.innerWidth;
-        return -(sectionWidth - viewportWidth);
+      // Calculate exact distance to sync sideways movement with scroll wheel
+      const getScrollDistance = () => {
+        return scrollingSection.current.scrollWidth - window.innerWidth;
       };
 
-      // responsive design properties
       let mm = gsap.matchMedia();
 
-      mm.add("(min-width: 900px)", () => {
+      // Perfectly matches Tailwind's 'lg:' breakpoint
+      mm.add("(min-width: 1024px)", () => {
         gsap.to(scrollingSection.current, {
-          x: getScrollAmount, // GSAP calls this function to get the exact value
+          x: () => -getScrollDistance(),
           ease: "none",
           scrollTrigger: {
-            trigger: container.current, // The section that stays pinned
+            trigger: container.current,
             start: "top top",
-            end: () => `+=${scrollingSection.current.scrollWidth}`,
-            pin: true, // Pins the container so it doesn't move up
-            scrub: 1, // Smoothly ties the movement to the scrollbar
-            invalidateOnRefresh: true, // Re-calculates if the window is resized
+            end: () => `+=${getScrollDistance()}`,
+            pin: true,
+            scrub: 2, // Increased for a buttery smooth glide
+            anticipatePin: 1, // Prevents layout snapping when the pin starts
+            invalidateOnRefresh: true,
           },
         });
       });
@@ -104,31 +83,36 @@ const DrinkCollation = () => {
   );
 
   return (
-    <div ref={container} className="w-screen h-auto bg-[#FAEADE] ">
+    // Added overflow-hidden to hide native scrollbars and prevent browser jitter
+    <div
+      ref={container}
+      className="w-screen h-auto bg-[#FAEADE] overflow-hidden"
+    >
       <div
         ref={scrollingSection}
-        className="flex flex-col w-[90vw] py-[10vh] mx-auto border 
-        lg:flex-row lg:w-auto lg:py-0 "
+        // Added will-change-transform to force GPU hardware acceleration
+        className="will-change-transform flex flex-col w-[90vw] py-[10vh] mx-auto     
+        lg:flex-row lg:w-auto lg:py-0"
       >
         {/* flaver title section */}
         <div
-          className="border w-full 
+          className="    w-full 
             md:w-full
-            lg:w-[60vw] lg:flex lg:justify-center lg:items-center lg:h-dvh"
+            lg:w-[60vw] lg:flex lg:justify-center lg:items-center lg:h-dvh lg:shrink-0"
         >
           <div
-            className="uppercase text-center text-[8vw] scale-y-150 leading-[6vw] font-bold overflow-hidden border
+            className="uppercase text-center text-[8vw] scale-y-150 leading-[6vw] font-bold overflow-hidden 
               lg:text-[5vw] lg:leading-[4vw] lg:w-[60vw]"
           >
             <h1 id="title">We have 6</h1>
             <div
               ref={clipText}
               style={{ clipPath: "polygon(0% 0, 100% 0, 100% 100%, 0% 100%)" }}
-              className="text-[#FAEADE] bg-[#A26833] w-max mx-auto border-[#FAEADE]  pt-3 p-1 -rotate-5 overflow-hidden"
+              className="text-[#FAEADE] bg-[#A26833] w-max mx-auto border-[#FAEADE] border-8  pt-3 p-1 -rotate-5 overflow-hidden"
             >
               <h1>FREaking</h1>
             </div>
-            <h1 id="title" className="overflow-hidden">
+            <h1 id="title" className="overflow-hidden relative -z-10">
               delicious flavors
             </h1>
           </div>
@@ -136,9 +120,9 @@ const DrinkCollation = () => {
 
         {/* scroling section */}
         <div
-          className="border w-full flex flex-col gap-20 pt-[10vh]
+          className="    w-full flex flex-col gap-[10vw] pt-[10vh] px-10
             md:w-full 
-            lg:flex-row lg:w-max  lg:h-screen lg:items-center lg:pt-0"
+            lg:flex-row lg:w-max lg:h-screen lg:items-center lg:pt-0"
         >
           {flavorlists.map((flavor) => (
             <div
@@ -146,8 +130,8 @@ const DrinkCollation = () => {
                 backgroundImage: `url('/images/${flavor.color}-bg.svg')`,
               }}
               key={flavor.color}
-              className="relative w-full h-[60vw] rounded-2xl border bg-center bg-no-repeat bg-cover mt-[10vw]
-                  lg:w-[50vw] lg:h-[35vw] lg:shrink-0 lg:mt-0" //bg-[url('/images/${flavor.color}-bg.svg')]
+              className={`relative w-full h-[60vw] rounded-2xl     bg-center bg-no-repeat bg-cover mt-[10vw]
+                  lg:w-[50vw] lg:h-[35vw] lg:shrink-0 lg:mt-0 rotation ${flavor.rotation} rotate-0`}
             >
               <img
                 src={`/images/${flavor.color}-elements.webp`}
@@ -159,39 +143,8 @@ const DrinkCollation = () => {
                 alt=""
                 className="absolute h-[70vw] bottom-0 left-1/2 -translate-x-1/2 lg:h-[40vw]"
               />
-
-              {/* 
-              <img
-                src={`/images/${flavor.color}-drink.webp`}
-                alt=""
-                className="absolute h-[70vw] bottom-0 left-1/2 -translate-x-1/2 "
-              />
-              <img
-                src={`/images/${flavor.color}-drink.webp`}
-                alt=""
-                className="absolute h-[70vw] bottom-0 left-1/2 -translate-x-1/2 "
-              />
-              <img
-                src={`/images/${flavor.color}-elements.webp`}
-                alt=""
-                className="absolute bottom-15 left-0 "
-              /> */}
             </div>
           ))}
-          {/* <div className="relative w-full h-[60vw] rounded-2xl bg-[url('/images/black-bg.svg')] bg-cover bg-center bg-amber-200">
-            <img
-              src="/images/black-drink.webp"
-              alt=""
-              className="absolute h-[70vw] bottom-0 left-1/2 -translate-x-1/2 "
-            />
-            <img
-              src="/images/black-elements.webp"
-              alt=""
-              className="absolute bottom-15 left-0 "
-            />
-          </div> */}
-          {/* <div className="w-full h-[10vw] bg-amber-300">box1</div>
-          <div className="w-full h-[10vw] bg-amber-400">box1</div> */}
         </div>
       </div>
     </div>

@@ -11,7 +11,7 @@ const TextSection = () => {
   useGSAP(
     () => {
       const split = new SplitText("h1", { type: "words" });
-      const ParaText = new SplitText("#ParaText", { type: "words" });
+      const ParaText = new SplitText("#ParaText", { type: "lines" });
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -37,9 +37,9 @@ const TextSection = () => {
           },
           "-=1",
         ) // Starts the clipPath reveal 0.5 seconds before the text finishes
-        .from(ParaText.words, {
+        .from(ParaText.lines, {
           y: 100,
-          duration: 1,
+          duration: 2,
           stagger: 0.1,
           ease: "power2.inOut",
         });
@@ -52,10 +52,10 @@ const TextSection = () => {
       ref={container}
       className="flex relative justify-center items-center w-screen h-dvh bg-[#7E3B2D]"
     >
-      <div className="border-8">
+      <div>
         <div
           id="textParent"
-          className="text-[#89493A] text-center text-[8vw] scale-y-150 leading-[8vw] font-bold w-screen border font-antonio
+          className="text-[#89493A] text-center text-[8vw] scale-y-150 leading-[8vw] font-bold w-screen   font-antonio
           md:text-[5vw] md:leading-[5vw]"
         >
           <h1 id="text">STIR UP YOUR</h1>
@@ -66,7 +66,7 @@ const TextSection = () => {
             style={{ clipPath: "polygon(50% 0, 50% 0, 50% 100%, 50% 100%)" }} // Fixed clipPath to show element
             className="m-1 -rotate-4 inline-block"
           >
-            <span className="bg-[#E3A458] px-5 py-1 text-[#7F3B2D] border border-[#7F3B2D]">
+            <span className="bg-[#E3A458] px-5 py-1 text-[#7F3B2D]   border-[#7F3B2D]">
               FUEL UP
             </span>
           </div>
@@ -78,7 +78,7 @@ const TextSection = () => {
         <div className="relative top-[10vh] lg:top-[13vh]">
           <p
             id="ParaText"
-            className="text-sm text-white w-screen text-center px-10 overflow-hidden 
+            className="text-sm font-light text-[#bb7a6b] w-screen text-center px-10 overflow-hidden 
             lg:text-2xl "
           >
             Rev up your rebel spirit and feed the adventure of life with SPYLT,

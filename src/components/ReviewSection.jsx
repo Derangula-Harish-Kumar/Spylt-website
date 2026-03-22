@@ -35,7 +35,7 @@ const ReviewSection = () => {
           end: "+=150%", // Extends the pin distance so you have room to scroll through the animation
           pin: true,
           scrub: 1, // Changed from 'true' to '1' for a slight, buttery smooth delay on the scrub
-          markers: true, // Remember to remove this before production!
+          // markers: true, // Remember to remove this before production!
         },
       });
 
@@ -86,7 +86,7 @@ const ReviewSection = () => {
         <h1 className="bg-text text-[20vw] font-black text-[#1D1D1D] leading-[0.8] uppercase">
           What's
         </h1>
-        <h1 className="bg-text text-[20vw] font-black text-[#C88E64] leading-[0.8] uppercase self-end">
+        <h1 className="bg-text text-[17vw] font-black text-[#C88E64] leading-[0.8] uppercase self-end">
           Everyone
         </h1>
         <h1 className="bg-text text-[20vw] font-black text-[#1D1D1D] leading-[0.8] uppercase">
@@ -116,7 +116,7 @@ const ReviewSection = () => {
                 />
 
                 <div className="absolute bottom-4 left-4 flex items-center gap-2 pointer-events-none">
-                  <div className="w-6 h-6 rounded-full bg-white/20 backdrop-blur-md border border-white/50" />
+                  <div className="w-6 h-6 rounded-full bg-white/20 backdrop-blur-md     border-white/50" />
                   <span className="text-white text-[0.6rem] font-bold uppercase tracking-widest drop-shadow-md">
                     {card.name || "User"}
                   </span>

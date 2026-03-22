@@ -93,12 +93,16 @@ const Ingredence = () => {
       </div>
 
       {/* Sliding Text Section */}
-      <div className="absolute left-5 top-[30vw] text-4xl font-bold uppercase leading-[3vw] lg:top-[40vh] lg:text-[6vw]">
+      <div
+        className="absolute left-5 top-[30vw] text-4xl font-bold uppercase leading-[3vw]
+          md:text-6xl
+          lg:top-[40vh] lg:text-[6vw]"
+      >
         <h1 ref={title}>it still does</h1>
         <div
           ref={clipText}
           style={{ clipPath: "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)" }}
-          className="bg-[#A26833] border-[#FDEBD2] border-[3px] p-3 pt-5 w-max -rotate-2"
+          className="bg-[#A26833] border-[#FDEBD2] border-[3px] p-3 pt-5 w-max -rotate-2 md:pt-8 lg:pt-12"
         >
           <h1 className="text-[#FAEADE]">body good</h1>
         </div>
@@ -107,7 +111,7 @@ const Ingredence = () => {
       {/* Paragraph Section */}
       <div
         ref={paraRef}
-        className="absolute top-[55vw] lg:right-10 ml-5 text-[3.5vw] w-60 font-light leading-4 font-serif lg:w-75 lg:text-xl lg:top-[25vw]"
+        className="absolute top-[55vw] lg:right-10 ml-5 text-[3.5vw] w-60 font-light leading-6 font-serif md:w-[50%] md:leading-10 lg:leading-8  lg:w-75 lg:text-xl lg:top-[25vw]"
       >
         <p>
           Milk contains a wide array of nutrients, including vitamins, minerals,
