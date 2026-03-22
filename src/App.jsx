@@ -8,7 +8,11 @@ import HeroSection from "./components/HeroSection";
 import NavBar from "./components/NavBar";
 import TextSection from "./components/TextSection";
 import DrinkCollation from "./components/DrinkCollation";
-import Infredence from "./components/Infredence";
+import Ingredence from "./components/Ingredence";
+import ClipText from "./components/ClipText";
+import VideoPin from "./components/VideoPin";
+import ReviewSection from "./components/ReviewSection";
+import Footer from "./components/Footer";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -51,9 +55,11 @@ const App = () => {
         <HeroSection />
         <TextSection />
         <DrinkCollation />
-        <Infredence />
-        {/* Spacer for scroll room */}
-        <div className="w-screen h-dvh"></div>
+        <Ingredence />
+        <ClipText />
+        <VideoPin />
+        <ReviewSection />
+        <Footer />
       </main>
     </div>
   );

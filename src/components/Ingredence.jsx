@@ -7,7 +7,7 @@ import { nutrientLists } from "../constants";
 // Register outside the component
 gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
 
-const Infredence = () => {
+const Ingredence = () => {
   const title = useRef(null);
   const paraRef = useRef(null); // Renamed to avoid collision
   const clipText = useRef(null);
@@ -23,7 +23,7 @@ const Infredence = () => {
         scrollTrigger: {
           trigger: heroParent.current,
           start: "top top", // Changed from top top so you can see it trigger
-          markers: true,
+          // markers: true,
         },
       });
 
@@ -139,4 +139,4 @@ const Infredence = () => {
   );
 };
 
-export default Infredence;
+export default Ingredence;
