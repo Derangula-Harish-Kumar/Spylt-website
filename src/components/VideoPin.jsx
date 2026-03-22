@@ -64,10 +64,11 @@ const VideoPin = () => {
             alt="Rotating Text"
             className="animate-spin [animation-duration:20s] w-full h-full"
           />
+
           <img
             src="/images/play.svg"
             alt="play icon"
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-1/4"
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-1/4 bg-black/40 backdrop-blur-md p-2 rounded-4xl"
           />
         </div>
       </div>

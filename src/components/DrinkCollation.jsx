@@ -62,7 +62,6 @@ const DrinkCollation = () => {
 
       let mm = gsap.matchMedia();
 
-      // Perfectly matches Tailwind's 'lg:' breakpoint
       mm.add("(min-width: 1024px)", () => {
         gsap.to(scrollingSection.current, {
           x: () => -getScrollDistance(),
@@ -72,8 +71,8 @@ const DrinkCollation = () => {
             start: "top top",
             end: () => `+=${getScrollDistance()}`,
             pin: true,
-            scrub: 2, // Increased for a buttery smooth glide
-            anticipatePin: 1, // Prevents layout snapping when the pin starts
+            scrub: 2,
+            anticipatePin: 1,
             invalidateOnRefresh: true,
           },
         });
@@ -83,22 +82,23 @@ const DrinkCollation = () => {
   );
 
   return (
-    // Added overflow-hidden to hide native scrollbars and prevent browser jitter
+    // FIXED 1: Changed w-screen to w-full to prevent scrollbar layout shift bugs
+    // FIXED 2: Changed h-auto to lg:h-screen so the pin knows exactly how tall to be
     <div
       ref={container}
-      className="w-screen h-auto bg-[#FAEADE] overflow-hidden"
+      className="w-full h-auto lg:h-screen bg-[#FAEADE] overflow-hidden"
     >
       <div
         ref={scrollingSection}
-        // Added will-change-transform to force GPU hardware acceleration
+        // FIXED 3: Added lg:w-max and lg:flex-nowrap to stop cards from squishing
+        // and throwing off the scrollWidth math
         className="will-change-transform flex flex-col w-[90vw] py-[10vh] mx-auto     
-        lg:flex-row lg:w-auto lg:py-0"
+        lg:flex-row lg:flex-nowrap lg:w-max lg:py-0"
       >
         {/* flaver title section */}
         <div
-          className="    w-full 
-            md:w-full
-            lg:w-[60vw] lg:flex lg:justify-center lg:items-center lg:h-dvh lg:shrink-0"
+          // FIXED 4: Standardized to lg:h-screen to match the parent
+          className="w-full md:w-full lg:w-[60vw] lg:flex lg:justify-center lg:items-center lg:h-screen lg:shrink-0"
         >
           <div
             className="uppercase text-center text-[8vw] scale-y-150 leading-[6vw] font-bold overflow-hidden 
@@ -120,8 +120,8 @@ const DrinkCollation = () => {
 
         {/* scroling section */}
         <div
-          className="    w-full flex flex-col gap-[10vw] pt-[10vh] px-10
-            md:w-full 
+          // FIXED 5: Standardized to lg:h-screen to match the parent
+          className="w-full flex flex-col gap-[10vw] pt-[10vh] px-10 md:w-full 
             lg:flex-row lg:w-max lg:h-screen lg:items-center lg:pt-0"
         >
           {flavorlists.map((flavor) => (
@@ -130,7 +130,7 @@ const DrinkCollation = () => {
                 backgroundImage: `url('/images/${flavor.color}-bg.svg')`,
               }}
               key={flavor.color}
-              className={`relative w-full h-[60vw] rounded-2xl     bg-center bg-no-repeat bg-cover mt-[10vw]
+              className={`relative w-full h-[60vw] rounded-2xl bg-center bg-no-repeat bg-cover mt-[10vw]
                   lg:w-[50vw] lg:h-[35vw] lg:shrink-0 lg:mt-0 rotation ${flavor.rotation} rotate-0`}
             >
               <img

@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import Lenis from "lenis";
+import { useState } from "react";
 
 import HeroSection from "./components/HeroSection";
 import NavBar from "./components/NavBar";
@@ -13,6 +14,7 @@ import ClipText from "./components/ClipText";
 import VideoPin from "./components/VideoPin";
 import ReviewSection from "./components/ReviewSection";
 import Footer from "./components/Footer";
+import Preloader from "./components/Preloader";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -48,11 +50,17 @@ const App = () => {
     { scope: container },
   );
 
+  // 1. Create a state to track the preloader's status
+  const [isPreloaderDone, setIsPreloaderDone] = useState(false);
+
   return (
     <div ref={container}>
       <NavBar />
       <main>
-        <HeroSection />
+        {!isPreloaderDone && (
+          <Preloader onComplete={() => setIsPreloaderDone(true)} />
+        )}
+        <HeroSection isPreloaderDone={isPreloaderDone} />
         <TextSection />
         <DrinkCollation />
         <Ingredence />

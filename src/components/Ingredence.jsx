@@ -132,7 +132,7 @@ const Ingredence = () => {
                 {list.label}
               </p>
               <p className="font-normal text-[0.7rem] lg:text-[1rem]">up to</p>
-              <p className="font-bold font-antonio text-[1rem] lg:text-3xl">
+              <p className="font-bold font-antonio text-[1rem] lg:text-2xl">
                 {list.amount}
               </p>
             </div>

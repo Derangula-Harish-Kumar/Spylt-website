@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { gsap } from "gsap";
 import { SplitText, ScrollTrigger } from "gsap/all";
 import { useGSAP } from "@gsap/react";
@@ -6,20 +6,46 @@ import { useGSAP } from "@gsap/react";
 // Register plugins outside the component to prevent re-registration
 gsap.registerPlugin(useGSAP, SplitText, ScrollTrigger);
 
-const HeroSection = () => {
+// 1. Accept the isPreloaderDone prop from App.jsx
+const HeroSection = ({ isPreloaderDone }) => {
   const title = useRef(null);
   const content = useRef(null);
   const clipText = useRef(null);
   const heroParent = useRef(null);
 
-  // 1. State to track if the intro video has finished playing
+  // 2. Add a ref to control the video
+  const videoRef = useRef(null);
+
+  // State to track if the intro video has finished playing
   const [isVideoDone, setIsVideoDone] = useState(false);
   const introTimeline = useRef(null);
 
-  // 2. Setup GSAP animations ONCE on mount
+  // 3. NEW: Watch for the preloader to finish, then manually press play!
+  useEffect(() => {
+    // Once the preloader is done sliding up, play the video
+    if (isPreloaderDone && videoRef.current) {
+      videoRef.current
+        .play()
+        .catch((e) => console.log("Autoplay prevented:", e));
+    }
+  }, [isPreloaderDone]);
+
+  // 4. Check video time to trigger text animations 0.5s early for a smooth transition
+  const handleTimeUpdate = (e) => {
+    const video = e.target;
+    if (
+      !isVideoDone &&
+      video.duration > 0 &&
+      video.duration - video.currentTime <= 0.5
+    ) {
+      setIsVideoDone(true);
+    }
+  };
+
+  // Setup GSAP animations ONCE on mount
   useGSAP(
     () => {
-      // Set up the ScrollTrigger (this can be active immediately)
+      // Set up the ScrollTrigger
       gsap.to(heroParent.current, {
         scrollTrigger: {
           trigger: heroParent.current,
@@ -64,13 +90,12 @@ const HeroSection = () => {
           "-=0.8",
         );
     },
-
     {
       scope: heroParent.current,
     },
   );
 
-  // 3. Play the intro timeline only when the video finishes
+  // Play the intro timeline only when the video finishes (or hits the 0.5s mark)
   useGSAP(
     () => {
       if (isVideoDone && introTimeline.current) {
@@ -81,18 +106,16 @@ const HeroSection = () => {
   );
 
   return (
-    // Added 'relative' and defined full width/height for the parent container
     <div className="relative overflow-hidden bg-black w-full h-dvh">
-      {/* SPLASH VIDEO 
-        Using absolute positioning to overlay it. 
-        When isVideoDone becomes true, Tailwind smoothly fades it out to opacity-0.
-      */}
+      {/* SPLASH VIDEO */}
       <video
+        ref={videoRef} // <-- Attached the ref here
         src="/videos/hero-bg.mp4"
-        autoPlay
+        // autoPlay REMOVED! We are controlling it manually now.
         muted
         playsInline
-        onEnded={() => setIsVideoDone(true)} // Triggers when the video ends naturally
+        onTimeUpdate={handleTimeUpdate} // <-- Added early trigger
+        onEnded={() => setIsVideoDone(true)}
         className={`absolute inset-0 w-full h-full object-cover z-50 transition-opacity duration-1000 ease-in-out ${
           isVideoDone ? "opacity-0 pointer-events-none" : "opacity-100"
         }`}
