@@ -1,14 +1,5 @@
 # 🚀 Spylt Website Clone
 
-A modern, high-performance frontend project inspired by a premium website design.  
-This project focuses on smooth animations, immersive UI, and responsive design using the latest frontend technologies.
-
----
-
-## 🌐 Live Demo
-🔗 https://spylt-website-mwqz.vercel.app/
-
----
 
 ## 📸 Screenshots
 
@@ -19,6 +10,19 @@ This project focuses on smooth animations, immersive UI, and responsive design u
   <img src="./screenshots/LaptopView.png" width="460"/>
   <img src="./screenshots/Tab.png" width="230"/>
 </p>
+
+A modern, high-performance frontend project inspired by a premium website design.  
+This project focuses on smooth animations, immersive UI, and responsive design using the latest frontend technologies.
+
+---
+
+
+## 🌐 Live Demo
+🔗 https://spylt-website-mwqz.vercel.app/
+
+---
+
+
 
 ### 🎬 Animations Section
 
