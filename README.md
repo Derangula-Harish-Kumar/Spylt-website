@@ -12,10 +12,11 @@ This project focuses on smooth animations, immersive UI, and responsive design u
 
 ## 📸 Screenshots
 
-### 🖥️ Home Page
-![Home](./screenshots/MobileView.png)
-![Home](./screenshots/LaptopView.png)
-![Home](./screenshots/Tab.png)
+### 🖥️ Responsive Views
+
+![Mobile View](./screenshots/MobileView.png)  
+![Laptop View](./screenshots/LaptopView.png)  
+![Tablet View](./screenshots/Tab.png)
 
 ### 🎬 Animations Section
 ![Animations](./screenshots/animation.png)
@@ -49,8 +50,8 @@ This project focuses on smooth animations, immersive UI, and responsive design u
 
 ## 📚 What I Learned
 
-- How to implement GSAP animations in React  
-- Creating smooth scrolling effects using Lenis  
+- Implementing GSAP animations in React  
+- Creating smooth scrolling using Lenis  
 - Improving UI performance and user experience  
 - Structuring scalable frontend applications  
 
