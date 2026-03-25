@@ -1,27 +1,30 @@
 # 🚀 Spylt Website Clone
 
-A modern, high-performance frontend project inspired by a premium website design. This project focuses on smooth animations, immersive UI, and responsive design.
+A modern, high-performance frontend project inspired by a premium website design.  
+This project focuses on smooth animations, immersive UI, and responsive design using the latest frontend technologies.
 
 ---
 
 ## 🌐 Live Demo
-🔗 https://your-live-link.vercel.app
+🔗 https://spylt-website-mwqz.vercel.app/
 
 ---
 
 ## 📸 Screenshots
 
 ### 🖥️ Home Page
-![Home Screenshot](./screenshots/home.png)
+![Home](./screenshots/MobileView.png)
+![Home](./screenshots/LaptopView.png)
+![Home](./screenshots/Tab.png)
 
 ### 🎬 Animations Section
-![Animations Screenshot](./screenshots/animations.png)
+![Animations](./screenshots/animation.png)
 
 ---
 
 ## 🎥 Demo Video
 
-[▶️ Watch Demo Video](https://your-video-link.com)
+[![Watch Demo](https://img.youtube.com/vi/IXODVaL4Caw/0.jpg)](https://youtu.be/IXODVaL4Caw)
 
 ---
 
@@ -29,33 +32,36 @@ A modern, high-performance frontend project inspired by a premium website design
 
 - React + Vite  
 - Tailwind CSS  
-- GSAP (GreenSock)  
-- Lenis (Smooth Scroll)
+- GSAP (GreenSock Animation Platform)  
+- Lenis (Smooth Scrolling)
 
 ---
 
 ## ✨ Features
 
 - Smooth scrolling experience  
-- Advanced GSAP animations  
-- Responsive design  
-- Modern UI inspired by Awwwards websites  
+- Advanced animations using GSAP  
+- Clean and modern UI design  
+- Fully responsive layout  
+- High-performance frontend  
 
 ---
 
 ## 📚 What I Learned
 
-- How to integrate GSAP with React  
-- Creating smooth scrolling using Lenis  
-- Performance optimization techniques  
-- Building real-world UI projects  
+- How to implement GSAP animations in React  
+- Creating smooth scrolling effects using Lenis  
+- Improving UI performance and user experience  
+- Structuring scalable frontend applications  
 
 ---
 
-## 📂 Installation
+## 📂 Installation & Setup
+
+Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/your-repo.git
-cd your-repo
+git clone https://github.com/Derangula-Harish-Kumar/Spylt-website.git
+cd Spylt-website
 npm install
 npm run dev
