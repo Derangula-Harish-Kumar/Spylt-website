@@ -1,20 +1,61 @@
-<<<<<<< HEAD
-# Spylt-website
-=======
-# React + Vite
+# 🚀 Spylt Website Clone
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, high-performance frontend project inspired by a premium website design. This project focuses on smooth animations, immersive UI, and responsive design.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌐 Live Demo
+🔗 https://your-live-link.vercel.app
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📸 Screenshots
 
-## Expanding the ESLint configuration
+### 🖥️ Home Page
+![Home Screenshot](./screenshots/home.png)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
->>>>>>> 1c0e19b (adding pin propertey)
+### 🎬 Animations Section
+![Animations Screenshot](./screenshots/animations.png)
+
+---
+
+## 🎥 Demo Video
+
+[▶️ Watch Demo Video](https://your-video-link.com)
+
+---
+
+## 🛠️ Tech Stack
+
+- React + Vite  
+- Tailwind CSS  
+- GSAP (GreenSock)  
+- Lenis (Smooth Scroll)
+
+---
+
+## ✨ Features
+
+- Smooth scrolling experience  
+- Advanced GSAP animations  
+- Responsive design  
+- Modern UI inspired by Awwwards websites  
+
+---
+
+## 📚 What I Learned
+
+- How to integrate GSAP with React  
+- Creating smooth scrolling using Lenis  
+- Performance optimization techniques  
+- Building real-world UI projects  
+
+---
+
+## 📂 Installation
+
+```bash
+git clone https://github.com/your-username/your-repo.git
+cd your-repo
+npm install
+npm run dev
