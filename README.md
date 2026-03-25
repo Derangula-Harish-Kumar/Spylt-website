@@ -14,18 +14,27 @@ This project focuses on smooth animations, immersive UI, and responsive design u
 
 ### 🖥️ Responsive Views
 
-![Mobile View](./screenshots/MobileView.png)  
-![Laptop View](./screenshots/LaptopView.png)  
-![Tablet View](./screenshots/Tab.png)
+<p align="center">
+  <img src="./screenshots/MobileView.png" width="230"/>
+  <img src="./screenshots/LaptopView.png" width="260"/>
+  <img src="./screenshots/Tab.png" width="230"/>
+</p>
 
 ### 🎬 Animations Section
-![Animations](./screenshots/animation.png)
+
+<p align="center">
+  <img src="./screenshots/animation.png" width="600"/>
+</p>
 
 ---
 
 ## 🎥 Demo Video
 
-[![Watch Demo](https://img.youtube.com/vi/IXODVaL4Caw/0.jpg)](https://youtu.be/IXODVaL4Caw)
+<p align="center">
+  <a href="https://youtu.be/IXODVaL4Caw">
+    <img src="https://img.youtube.com/vi/IXODVaL4Caw/0.jpg" width="600"/>
+  </a>
+</p>
 
 ---
 
@@ -56,6 +65,12 @@ This project focuses on smooth animations, immersive UI, and responsive design u
 - Structuring scalable frontend applications  
 
 ---
+Connect With Me
+LinkedIn: LinkedIn profile link
+Follow me on LinkedIn:
+www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=d-harish-kumar-2bb79a304
+Portfolio: [https://your-portfolio-link.com](https://my-portfolio-gamma-six-59.vercel.app/)
+
 
 ## 📂 Installation & Setup
 
