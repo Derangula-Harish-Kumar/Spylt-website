@@ -16,7 +16,7 @@ This project focuses on smooth animations, immersive UI, and responsive design u
 
 <p align="center">
   <img src="./screenshots/MobileView.png" width="180"/>
-  <img src="./screenshots/LaptopView.png" width="360"/>
+  <img src="./screenshots/LaptopView.png" width="460"/>
   <img src="./screenshots/Tab.png" width="230"/>
 </p>
 
