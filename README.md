@@ -69,6 +69,7 @@ Connect With Me
 LinkedIn: LinkedIn profile link
 Follow me on LinkedIn:
 www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=d-harish-kumar-2bb79a304
+
 Portfolio: [https://your-portfolio-link.com](https://my-portfolio-gamma-six-59.vercel.app/)
 
 
